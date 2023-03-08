@@ -11,6 +11,8 @@ const { User, Product } = require('../model');
 const user = new User();
 //Creating a product instance
 const product = new Product();
+//Creating a cart instance
+const cart = new Cart();
 
 
 route.get('^/$|/RUN IT', (req, res) => {
@@ -62,3 +64,4 @@ route.delete('/product/:id', (req, res) => {
   product.deleteProduct(req, res);
 });
 
+module.exports = route;

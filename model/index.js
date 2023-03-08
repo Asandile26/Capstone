@@ -201,6 +201,7 @@ class Product {
     }
 
 }
+    
 // Export User class
 module.exports = {
     User, 
