@@ -201,9 +201,76 @@ class Product {
     }
 
 }
+//Cart
+ class Cart{
+    fetchCart(req, res) {
+        const box = `SELECT cartId, userID, prodID FROM Cart WHERE userID = ?;`;
+        run.query(box, [req.params.id], (err, data) => {
+            if (err) throw err;
+            else {
+                if (data.length === 0) {
+                    res.status(200).json({ message: "Cart is empty" });
+                } else {
+                    res.status(200).json({ results: data });
+                }
+            }
+        });
+    };
+    fetchCartById(req, res) {
+        const box = `SELECT cartID, prodID
+        FROM Cart
+        WHERE cartID = ?;`;
+        run.query(box, [req.params.id], (err, results)=> {
+            if(err) throw err;
+            res.status(200).json({results: results})
+        });
+
+    }
+  addToCart(req, res) {
+    const box = `
+    INSERT INTO Cart SET ?;`;
+    run.query(box,[req.body], (err)=>{
+        if(err){
+            res.status(400).json({err})
+            } else {
+                res.status(200).json({message: "An item was added."}) 
+        }
+    } )
+  }
+  UpdateCart(req, res) {
+    const box = ` UPDATE Cart SET ? WHERE cartID = ?`;
+    run.query(box,[req.body, req.params.id],
+        (err)=> {
+            if(err){
+                res.status(400).json({err: "Unable to update a item."});
+            }else {
+                res.status(200).json({message: "Item is  updated"});
+            }
+        }
+    );   
+  }
+  deleteCart(req, res) {
+    const box = `
+    DELETE FROM Cart
+    WHERE cartID = ?;
+    `;
+    run.query(box, [req.params.id], (err, result) => {
+        if (err) {
+            res.status(400).json({ error: "The item was not found." });
+        } else if (result.affectedRows === 0) {
+            res.status(404).json({ error: "The item was not found." });
+        } else {
+            res.status(200).json({ message: "An item was deleted." });
+        }
+    });
+}
+
+
+}
     
 // Export User class
 module.exports = {
     User, 
-    Product
+    Product,
+    Cart
 }
