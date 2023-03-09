@@ -4,7 +4,7 @@ const route = require('./controller');
 // cors
 const cors = require('cors');
 // port 
-const port = parseInt(process.env.PORT) || 2015;
+const port = parseInt(process.env.PORT) || 1999;
 // Express app
 const app = express();
 // Middleware
@@ -29,7 +29,7 @@ app.use(
 
 // Server is running
 app.listen(port, ()=> {
-    console.log(`jog is a run ${port}`)
+    console.log(`server is going for a run  ${port}`)
 });
 // Handling all errors
 app.use(errorHandling);

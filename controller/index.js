@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 //Router
 const route = express.Router();
 //Model
-const { User, Product } = require('../model');
+const { User, Product, Cart } = require('../model');
 //Creating a user instance
 const user = new User();
 //Creating a product instance

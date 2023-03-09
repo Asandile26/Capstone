@@ -3,7 +3,7 @@ const run = require('../config');
 //bcrypt module
 const { hash, compare, hashSync } = require('bcrypt');
 //middleware for creating tokens
-const { createToken} = require('../middleware/AuthenthicatedUser')
+const { createToken} = require('../middleware/AuthenticatedUser')
 // User 
 class User {
     login(req, res) {
@@ -140,16 +140,16 @@ class User {
 // Product
 class Product {
     fetchProducts(req, res) {
-        const box = `SELECT prodID, prodName, categories, price, size, imgURL, userID
-        FROM products;`;
+        const box = `SELECT prodID, prodName, categories, price, size, imgURL,color
+        FROM Products;`;
         run.query(box, (err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})
         });
     }
     fetchProduct(req, res) {
-        const box = `SELECT prodID, prodName, categories, price, size, imgURL, userID
-        FROM products
+        const box = `SELECT prodID, prodName, categories, price, size, imgURL, color
+        FROM Products
         WHERE prodID = ?;`;
         run.query(box, [req.params.id], (err, results)=> {
             if(err) throw err;
@@ -159,7 +159,7 @@ class Product {
     }
     addProduct(req, res) {
         const box = `
-        INSERT INTO products
+        INSERT INTO Products
         SET ?;`;
         run.query(box,[req.body], (err)=> {
             if(err){
@@ -204,7 +204,7 @@ class Product {
 //Cart
  class Cart{
     fetchCart(req, res) {
-        const box = `SELECT cartId, userID, prodID FROM Cart WHERE userID = ?;`;
+        const box = `SELECT cartId, userID, cart JSON FROM Cart WHERE userID = ?;`;
         run.query(box, [req.params.id], (err, data) => {
             if (err) throw err;
             else {
@@ -217,9 +217,9 @@ class Product {
         });
     };
     fetchCartById(req, res) {
-        const box = `SELECT cartID, prodID
+        const box = `SELECT cartID, userID, cart JSON
         FROM Cart
-        WHERE cartID = ?;`;
+        WHERE userID = ?;`;
         run.query(box, [req.params.id], (err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})
