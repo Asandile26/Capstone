@@ -111,8 +111,9 @@ class User {
       
       async updateUser(req, res) {
         let sage = req.body;
-        if (sage.userPass !== null || sage.userPass !== undefined)
+        if (sage.userPass !== null && sage.userPass !== undefined) {
           sage.userPass = hashSync(sage.userPass, 12);
+        }
         const box = `
           UPDATE Users
           SET ?
@@ -127,6 +128,7 @@ class User {
           }
         });
       }
+      
       
 
       
