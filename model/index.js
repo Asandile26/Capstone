@@ -274,7 +274,6 @@ class Product {
     });
 }
 
-
 }
     
 // Export User class

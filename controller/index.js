@@ -87,4 +87,7 @@ route.put('/user/:id/cart', bodyParser.json(), (req, res) => {
 route.delete('/user/:id/cart', (req, res) => {
   cart.deleteCart(req, res);
 });
+route.delete('/user/:id/cart/:id', (req, res) => {
+  cart.deleteCart(req, res);
+});
 module.exports = route;
