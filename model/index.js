@@ -110,17 +110,25 @@ class User {
       }
       
       async updateUser(req, res) {
-        try {
-          const { userID, sage } = req.body;
-          if (sage.userPass) {
-            sage.userPass = await hashSync(sage.userPass, 12);
+        let sage = req.body;
+        if (sage.userPass !== null || sage.userPass !== undefined)
+          sage.userPass = hashSync(sage.userPass, 12);
+        const box = `
+          UPDATE Users
+          SET ?
+          WHERE userID = ?;
+        `;
+        run.query(box, [sage, req.params.id], (err) => {
+          if (err) {
+            console.error(err);
+            res.status(500).json({ message: "An error occurred" });
+          } else {
+            res.status(200).json({ message: "A row was affected" });
           }
-          await run.query('UPDATE Users SET ? WHERE userID = ?', [sage, userID]);
-          res.status(200).json({ message: 'A row was affected' });
-        } catch (err) {
-          res.status(500).json({ message: 'An error occurred while updating the user', error: err });
-        }
+        });
       }
+      
+
       
     deleteUser(req, res) {
         const box = 
@@ -173,13 +181,14 @@ class Product {
     updateProduct(req, res) {
         const box = 
         `
-        UPDATE products
+        UPDATE Products
         SET ?
         WHERE prodID = ?
         `;
         run.query(box,[req.body, req.params.id],
             (err)=> {
                 if(err){
+                    console.log(err);
                     res.status(400).json({err: "Unable to update a item."});
                 }else {
                     res.status(200).json({message: "Item is  updated"});
@@ -191,7 +200,7 @@ class Product {
     deleteProduct(req, res) {
         const box = 
         `
-        DELETE FROM products
+        DELETE FROM Products
         WHERE prodID = ?;
         `;
         run.query(box,[req.params.id], (err)=> {
