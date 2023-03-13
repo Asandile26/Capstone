@@ -7,7 +7,9 @@
 import ContactComp from '@/components/ContactComp.vue';
 export default {
     name: 'ContactView',
-    components: ContactComp
+    components: {
+      ContactComp
+    }
 }
 </script>
 <style lang="">

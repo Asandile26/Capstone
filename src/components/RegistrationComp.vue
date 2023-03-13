@@ -6,7 +6,7 @@
 <script>
 
 export default {
-    
+    name: 'RegistrationComp'
 }
 </script>
 <style lang="">

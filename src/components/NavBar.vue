@@ -1,11 +1,11 @@
 <template lang="">
-    <div>
-        
-    </div>
+ <div>
+
+ </div>
 </template>
 <script>
 export default {
-    
+    name: 'NavBar'
 }
 </script>
 <style lang="">

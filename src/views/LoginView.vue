@@ -7,7 +7,8 @@
 import LoginComp from '@/components/LoginComp.vue';
 export default {
     name: 'LoginView', 
-    components: LoginComp
+    components: {
+        LoginComp}
 }
 </script>
 <style lang="">
