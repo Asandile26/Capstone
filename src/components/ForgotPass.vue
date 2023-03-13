@@ -1,6 +1,6 @@
 <template lang="">
     <div class="forgot">
-        <form action="">
+        <form action="https://formspree.io/f/mwkjqqzd" method="POST">
             <h2>FORGOT PASSWORD</h2>
             <div>
             <label for="emal">Emaill:</label>
