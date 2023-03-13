@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        
+        <h2>Copyright &copy; 2023 Don Nator</h2>
     </div>
 </template>
 <script>

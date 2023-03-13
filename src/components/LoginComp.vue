@@ -4,16 +4,16 @@
             <form action="">
                 <h2>Login</h2>
                 <div class="inputF">
-                <input type="email" required placeholder="Please enter your email" v-model="Email">
-                <label for="">Email</label>                    
+                <label for="">Email:</label> 
+                <input type="email" required placeholder="Please enter your email" v-model="Email">                 
                 </div>
                 <div class="inputF">
-                <input type="password" required placeholder="Please enter your password" v-model="password">
-                <label for="">password</label>                    
+                <label for="">Password:</label>
+                <input type="password" required placeholder="Please enter your password" v-model="password">                
                 </div>
                 <div class="forget">
-                    <label for=""><input type="checkbox">Remember me</label>
-                    <a href="">Forgot Password?</a>
+                    <label for=""><input type="checkbox">Remember me: </label>
+                    <a href=""><router-link to="/forgot">Forgot Password?</router-link></a>
                 </div>
                 <button>Log in</button>
                 <div class="register">

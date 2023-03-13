@@ -5,6 +5,7 @@ import ProductsViewVue from '@/views/ProductsView.vue'
 import CartViewVue from '@/views/CartView.vue'
 import ContactCompVue from '@/components/ContactComp.vue'
 import RegistrationViewVue from '@/views/RegistrationView.vue'
+import ForgotPassVue from '@/components/ForgotPass.vue'
 
 const routes = [
   {
@@ -44,6 +45,11 @@ const routes = [
     path: '/register',
     name: 'registration',
     component: RegistrationViewVue
+  },
+  {
+    path: '/forgot',
+    name: 'forgotPass',
+    component: ForgotPassVue
   }
 ]
 
