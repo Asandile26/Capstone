@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-    <form action="https://formspree.io/f/mwkjqqzd" method="POST">
+    <form action="https://formspree.io/f/mwkjqqzd" method="POST"  @submit.prevent="onSubmit">
     <div class="inputF">
     <label for="FullName">Full Name</label>
     <input name="FullName" id="FullName" type="name" v-model="FullName">

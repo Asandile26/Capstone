@@ -1,7 +1,7 @@
 <template lang="">
     <div>
         <div class="registration">
-            <form action="">
+            <form action=""  @click.prevent="onRegister">
 
             <h2>Register here</h2>
             <div class="inputR">
@@ -27,7 +27,7 @@
             <label for="female">Female</label><br>
             <input type="radio" id="other" name="gender" value="other">
             <label for="other">Other</label>
-            <input type="submit" value="Register">
+            <button type="submit">Register</button>
             </form>
         </div>
     </div>
@@ -35,7 +35,12 @@
 <script>
 
 export default {
-    name: 'RegistrationComp'
+    name: 'RegistrationComp',
+    methods: {
+    onRegister() {
+    
+    }
+  }
 }
 </script>
 <style lang="">

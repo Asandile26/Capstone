@@ -1,7 +1,7 @@
 <template lang="">
    <div class="form">
         <div class="form-value">
-            <form action="">
+            <form action=""  @click.prevent="onLogIn">
                 <h2>Login</h2>
                 <div class="inputF">
                 <label for="">Email:</label> 
@@ -15,7 +15,7 @@
                     <label for=""><input type="checkbox">Remember me: </label>
                     <a href=""><router-link to="/forgot">Forgot Password?</router-link></a>
                 </div>
-                <button>Log in</button>
+                <button type="submit">Log in</button>
                 <div class="register">
                     <p>Don't have an account? <a href=""><router-link to="/register">Register</router-link> </a></p>
                 </div>
@@ -26,7 +26,12 @@
 </template>
 <script>
 export default {
-   name: 'LoginComp' 
+   name: 'LoginComp' ,
+   methods: {
+    onLogIn() {
+      
+    }
+  }
 }
 </script>
 <style lang="">

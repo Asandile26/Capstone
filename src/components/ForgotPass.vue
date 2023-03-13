@@ -1,6 +1,6 @@
 <template lang="">
     <div class="forgot">
-        <form action="https://formspree.io/f/mwkjqqzd" method="POST">
+        <form action="https://formspree.io/f/mwkjqqzd" method="POST"  @submit.prevent="onSubmit">
             <h2>FORGOT PASSWORD</h2>
             <div>
             <label for="email">Email:</label>
