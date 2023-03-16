@@ -15,8 +15,18 @@
     </div>
 </template>
 <script>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 export default {
-    name: 'ProductComp'
+    name: 'ProductComp',
+    setup(){
+      const store = useStore()
+      store.dispatch("fetchProducts")
+      const product = computed(() => store.state.product)
+      return{
+        product
+      }
+    }
 }
 </script>
 <style lang="">

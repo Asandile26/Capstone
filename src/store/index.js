@@ -19,8 +19,8 @@ export default createStore({
     setUser(state, value) {
       state.User = value
     },
-    setProducts(state, values) {
-      state.Products = values
+    setProducts(state, products) {
+      state.Products = products
     },
     setProduct(state, value) {
       state.Product = value
@@ -124,5 +124,26 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
+
+    async fetchCart(context) {
+      const res = await axios.get(`${Don}/cart`)
+      let {results, err} = await res.data
+      if(results){
+        context.commit('setCart', results)
+      }else{
+        context.commit('setMessage', err)
+      }
+    
+    },
+    
+    async fetchCartById(context, payload) {
+      const res = await axios.get(`${Don}/user/:id/cart`, payload)
+      let {results, err} = await res.data
+      if(results){
+        context.commit('setCart', results)
+      }else{
+        context.commit('setMessage', err)
+      } 
+    }
   },
 })

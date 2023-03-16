@@ -1,6 +1,7 @@
 <template lang="">
+  <div >
     <div>
-        <div class="card" v-for="pro in products" :key="pro" style="width: 18rem;">
+        <div class="card" v-for="pro in products" :key="pro.id" style="width: 18rem;">
   <img :src="pro.imgURL"  alt="Jogging stuff">
   <div class="card-body">
     <h5>Name: {{pro.prodName}}</h5>
@@ -10,10 +11,23 @@
   </div>
 </div>
     </div>
+  </div>
 </template>
 <script>
+import { computed} from 'vue'
+import useStore from 'vue'
 export default {
-    name: 'ProductsComp'
+    setup(){
+      const store = useStore()
+      store.dispatch("fetchProducts")
+      const products = computed(() => store.state.products)
+      return{
+        products
+      }
+    },
+    mounted(){
+      this.$store.dispatch("fetchProducts")
+    }
 }
 </script>
 <style lang="">
