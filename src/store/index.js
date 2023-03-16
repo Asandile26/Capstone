@@ -8,7 +8,7 @@ export default createStore({
     User: null,
     Products: null,
     Product: null,
-    message: null
+    message: null,
   },
   getters() {
   },
@@ -96,7 +96,7 @@ export default createStore({
       }
     },
     async fetchProduct(context, payload) {
-      const res = await axios.get(`${Don}/product/:id`, payload)
+      const res = await axios.get(`${Don}/product`, payload)
       let {results, err} = await res.data
       if(results){
         context.commit('setProduct', results)

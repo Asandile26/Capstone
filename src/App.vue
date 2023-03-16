@@ -1,7 +1,7 @@
 <template>
-  <footer-comp></footer-comp>
   <NavBar></NavBar>
   <router-view/>
+  <footer-comp></footer-comp>
 </template>
 <script>
 import FooterComp from './components/FooterComp.vue';

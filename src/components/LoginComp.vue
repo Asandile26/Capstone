@@ -26,8 +26,8 @@
 </template>
 <script>
 export default {
-   name: 'LoginComp' ,
-   data(){
+   name: 'LoginComp',
+   setup(){
     return {
         User:{
             Email: null,

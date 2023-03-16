@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <div class="card" v-for="pro in products" :key="pro" style="width: 18rem;">
+        <div class="card" v-for="pro in products" :key="pro" style="width: 10rem;">
   <img :src="pro.imgURL"  alt="Jogging stuff">
   <div class="card-body">
     <p>ID: {{pro.proID}}</p>
@@ -21,8 +21,8 @@ export default {
     name: 'ProductComp',
     setup(){
       const store = useStore()
-      store.dispatch("fetchProducts")
-      const product = computed(() => store.state.product)
+      store.dispatch("fetchProduct")
+      const product = computed(() => store.state.Product)
       return{
         product
       }
