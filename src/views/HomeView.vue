@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <HelloWorld/>
+    <SpinnerView/>
   </div>
 </template>
 

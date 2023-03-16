@@ -1,6 +1,7 @@
 <template lang="">
     <div>
         <ProductComp/>
+        <SpinnerView/>
     </div>
 </template>
 <script>

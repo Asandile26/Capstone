@@ -9,6 +9,7 @@ export default createStore({
     Products: null,
     Product: null,
     message: null,
+    showSpinner: null
   },
   getters() {
   },
@@ -27,6 +28,9 @@ export default createStore({
     },
     setMessage(state, value) {
       state.message = value
+    },
+    setSpinner(state, value){
+      state.showSpinner = value
     }
   },
   actions: {
@@ -38,8 +42,8 @@ export default createStore({
       console.log(res);
      
     },
-    async register(context, Users) {
-      const res = await axios.post(`${Don}/register`, Users)
+    async register(context, payload) {
+      const res = await axios.post(`${Don}/register`, payload)
       let {msg, err} = await res.data
       if(msg){
         context.commit('setMessage', msg)

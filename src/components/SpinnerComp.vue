@@ -1,7 +1,7 @@
 <template>
     <div class="spinner">
-        <div class="spinner-border" role="status">
-  <span class="visually-hidden">Loading...</span>
+        <div>
+  <img src="https://i.postimg.cc/Ls24xh0D/yin-and-yang-spinning.gif" alt="spinner">
 </div>
     </div>
 </template>

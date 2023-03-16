@@ -1,6 +1,7 @@
 <template lang="">
     <div>
       <ContactComp/>  
+      <SpinnerView/>
     </div>
 </template>
 <script>

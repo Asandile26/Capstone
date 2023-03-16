@@ -1,6 +1,7 @@
 <template lang="">
     <div>
-     <ForgotPass/>   
+     <ForgotPass/>  
+     <SpinnerView/> 
     </div>
 </template>
 <script>

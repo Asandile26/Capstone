@@ -1,6 +1,7 @@
 <template lang="">
     <div>
-       <RegistrationComp/> 
+       <RegistrationComp/>
+       <SpinnerView/> 
     </div>
 </template>
 <script>

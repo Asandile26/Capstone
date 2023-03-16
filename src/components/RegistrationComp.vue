@@ -57,22 +57,17 @@
     </div>
 </template>
 <script>
+import { useStore } from 'vuex'
+import { computed } from '@vue/reactivity';
 export default {
     name: 'RegistrationComp',
-    data(){
+    setup(){
+       const store = useStore()
+        store.dispatch("register");
+        const Users = computed(()=> store.state.Users)
         return {
-            Users:{
-        
-            firstName: '',
-            lastName: '',
-            gender: '',
-            cellphoneNumber: '',
-            emailAdd: '',
-            userPass: '',
-            userRole: '',
-            userProfile: '',
-            joinDate: ''    
-            }
+
+            Users
         }
     },
     methods: {
