@@ -1,9 +1,11 @@
 <template lang="">
     <div>
         <h2>User Table</h2>
+        <Spinner class="spinner" v-if="isLoading" />
+            <div v-else></div>
         <table class="table">
   <thead>
-    <tr>
+    <tr >
       <th scope="col">ID</th>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
@@ -18,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr v-for="items in userTable" :key="items">
      <td>{{items.firstName}}</td>
     <td>{{items.lastName}}</td>
     <td>{{items.gender}}</td>
@@ -49,9 +51,7 @@
             </tr>
           </thead>
           <tbody>
-            <Spinner class="spinner" v-if="isLoading" />
-            <div v-else></div>
-            <tr v-for="items in productFetch" :key="items">
+            <tr v-for="items in productTable" :key="items">
               <td>{{items.prodName}}</td>
               <td>R{{items.category}}</td>
               <td>R{{items.price}}</td>
