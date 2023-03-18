@@ -1,6 +1,8 @@
 <template>
   <NavBar></NavBar>
-  <router-view/>
+  <div class="container-fluid min-vh-100">
+    <router-view/>
+  </div>
   <footer-comp></footer-comp>
 </template>
 <script>

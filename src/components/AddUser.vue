@@ -1,9 +1,7 @@
 <template lang="">
     <div>
-        <div class="registration">
-            <form @submit.prevent="onRegister">
-            <h2>Register here</h2>
-            <div class="inputR">
+        <form @submit.prevent="handleSubmit">
+        <div class="inputR">
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" placeholder="Enter first name" v-model="payload.firstName">
             </div><br><br>
@@ -26,7 +24,7 @@
             </div><br><br>
             <div>
                 <label for="Email">Email:</label>
-                <input type="Email" name="EmailAdd" placeholder="Enter your email" v-model="payload.emailAdd">
+                <input type="Email" name="EmailAdd" placeholder="Enter your email" v-model="payload.EmailAdd">
             </div><br><br>
             <div>
             <label for="password">Password:</label>
@@ -34,67 +32,60 @@
             </div><br><br>
             <div>
             <label for="userRole">userRole:</label>
-            <input type="text" id="userRole" name="userRole" placeholder="User" required v-model="payload.userRole"> 
+            <input type="text" id="userRole" name="userRole" placeholder="User" required v-model="payload.userRole">
             </div><br><br>
             <div>
             <label for="userProfile">userProfile:</label>
-            <input type="text" id="userProfile" name="userProfile" placeholder="Initial and Last name" required v-model="payload.userProfile"> 
+            <input type="text" id="userProfile" name="userProfile" placeholder="Initial and Last name" required v-model="payload.userProfile">
             </div><br><br>
+            payload
             <div>
             <label for="joinDate">joinDate:</label>
             <input type="text" id="joinDate" name="joinDate" placeholder="Enter todays date
-            " required v-model="payload.joinDate"> 
+            " required v-model="payload.joinDate">
             </div><br><br>
 
-            <button type="submit" v-on:click.prevent="signUp(payload)">Register</button>
-            </form>
-        </div>
+
+ 
+      <button type="submit">Submit</button>
+    </form>
+
     </div>
 </template>
 <script>
-import { useStore } from 'vuex'
-import { computed } from '@vue/reactivity';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 export default {
-    setup(){
-        const payload = {
-            firstName: '',
-            lastName: '',
-            gender: '',
-            cellphoneNumber: '',
-            emailAdd: '',
-            userPass: '',
-            userRole: 'user',
-            userProfile: '',
-            joinDate: ''
-        }
-       const store = useStore()
-       const signUp = (payload) => {
-      store.dispatch("register", payload);
+    setup() {
+    const payload = {
+      firstName: '',
+      lastName: '',
+      cellphoneNumber: '',
+      emailAdd: '',
+      userPass: '',
+      userRole: '',
+      userProfile: '',
+      joinDate: ''
+    };
+    const store = useStore();
+    const addUser = ()=> {
+      store.dispatch("addUser", payload);
       store.dispatch("fetchUsers")
-    //   console.log(payload,alert('user successfully registered'));
-      
-      console.log(useStore)
-      }
-      const userMsg = 
-      computed( () => store.state)
-      return {
-        payload,
-        userMsg,
-        signUp,
-      
-      }
-    },
-    methods: {
-        onRegister() {
-            
-            // this.$store.dispatch('register', this.payload);
-        
+      console.log(payload,alert('user successfully registered'));  
     }
+    const AU = computed( ()=>
+        store.state)
+        return {
+        payload,
+        addUser,
+        AU,
+      
+      }
+  
 }
-
-
-}
-
+  
+  
+    }
 </script>
 <style lang="">
     

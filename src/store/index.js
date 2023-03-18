@@ -9,7 +9,7 @@ export default createStore({
     Products: null,
     Product: null,
     message: null,
-    showSpinner: null
+    showSpinner: false
   },
   getters() {
   },
@@ -31,16 +31,20 @@ export default createStore({
     },
     setSpinner(state, value){
       state.showSpinner = value
-    }
+    },
+    setLoggedUser(state, value) {
+      state.loggedUser = value;
+    },
   },
   actions: {
-    async login() {
-      const res = await axios.post(`${Don}/login`, {
-        emailAdd: this.emailAdd,
-        userPass: this.userPass
-      })
-      console.log(res);
-     
+    async login (context, payload) {
+      const res = await axios.post(`${Don}/login`,payload);
+      const { result, err } = await res.data;
+      if (result, err) {
+        context.commit("setLoggedUser", result);
+      } else {
+        context.commit("setMessage", err);
+      }
     },
     async register(context, payload) {
       const res = await axios.post(`${Don}/register`, payload)
@@ -71,7 +75,7 @@ export default createStore({
       }
     },
     async updateUser(context, id, name) {
-      const res = await axios.put(`${Don}/User/${id}`, {name: name})
+      const res = await axios.put(`${Don}/user/${id}`, {name: name})
       let {msg, err} = await res.data
       if(msg){
         context.commit('fetchUsers')
@@ -81,7 +85,7 @@ export default createStore({
       }
     },
     async deleteUser(context, id) {
-      const res = await axios.delete(`${Don}/User/${id}`)
+      const res = await axios.delete(`${Don}/user/${id}`)
       let {msg, err} = await res.data
       if(msg){
         context.commit('fetchUsers')
@@ -90,8 +94,16 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
+    async AddUser(context, user) {
+      try {
+        const res = await axios.post('/users', user)
+        context.commit('setUser', res.data)
+      } catch (error) {
+        context.commit('setMessage', error.message)
+      }
+    },
     async fetchProducts(context,) {
-      const res = await axios.get(`${Don}/Products`)
+      const res = await axios.get(`${Don}/products`)
       let {results, err} = await res.data
       if(results){
         context.commit('setProducts', results)

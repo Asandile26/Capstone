@@ -5,11 +5,11 @@
                 <h2>Login</h2>
                 <div class="inputF">
                 <label for="">Email:</label> 
-                <input type="email" required placeholder="Enter your email" v-model="User.Email">                 
+                <input type="email" required placeholder="Enter your email" v-model="payload.Email">                 
                 </div><br><br>
                 <div class="inputF">
                 <label for="">Password:</label>
-                <input type="password" required placeholder="Enter your password" v-model="User.password">                
+                <input type="password" required placeholder="Enter your password" v-model="payload.password">                
                 </div><br><br>
                 <div class="forget">
                     <label for=""><input type="checkbox">Remember me: </label>
@@ -26,22 +26,24 @@
 </template>
 <script>
 export default {
-   name: 'LoginComp',
-   setup(){
-    return {
-        User:{
-            Email: null,
-            Password: null
-        }
+    data(){
+      return{
+        payload:{
+          emailAdd:"",
+          userPass:""
+        },
+      };
+    },
+   computed:{
+    loggedUser(){
+      return this.$store.state.loggedUser
     }
    },
-   methods: {
-    onLogIn(e) {
-        console.log(this.User)
-      e.preventDefault();
-      
+   methods:{
+    login(){
+      this.$store.dispatch('login',this.payload)
     }
-  }
+   }
 }
 </script>
 <style lang="">

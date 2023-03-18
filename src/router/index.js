@@ -7,6 +7,7 @@ import ContactCompVue from '@/components/ContactComp.vue'
 import RegistrationViewVue from '@/views/RegistrationView.vue'
 import ForgotPassVue from '@/components/ForgotPass.vue'
 import ProductCompVue from '@/components/ProductComp.vue'
+import AdminViewVue from '@/views/AdminView.vue'
 
 const routes = [
   {
@@ -55,6 +56,11 @@ const routes = [
     path: '/product',
     name: 'product',
     component: ProductCompVue
+},
+{
+  path: '/admin',
+  name: 'admin',
+  component: AdminViewVue
 }
 ]
 
